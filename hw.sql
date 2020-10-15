@@ -96,3 +96,15 @@ WHERE user_id = 1;
 --5--
 select max(user_id)
 from ratings;
+--6--
+SELECT ratings.user_id,
+    AVG(ratings.rating) AS avgRatingsPerUser
+FROM ratings
+GROUP BY ratings.user_id
+ORDER BY avgRatingsPerUser DESC;
+--7--
+SELECT ratings.user_id,
+    SUM(ratings.rating) AS avgRatingsPerUser
+FROM ratings
+GROUP BY ratings.user_id
+ORDER BY SUM(ratings.rating) > 50 ASC;
